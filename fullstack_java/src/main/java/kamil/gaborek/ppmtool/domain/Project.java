@@ -23,12 +23,12 @@ public class Project {
     @NotBlank(message = "Project name is required")
     private String projectName;
     @NotBlank(message = "Project identifier is required")
-    @Size(min = 4, max = 5, message = "User 4 to 5 characters")
+    @Size(min = 4, max = 5, message = "Use 4 to 5 characters")
     @Column(updatable = false, unique = true)
     private String projectIdentifier;
     @NotBlank
     private String description;
-    
+
     @JsonFormat(pattern = "yyyy-dd-mm")
     private Date start_date;
     @JsonFormat(pattern = "yyyy-dd-mm")

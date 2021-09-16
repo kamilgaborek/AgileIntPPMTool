@@ -1,6 +1,7 @@
 package kamil.gaborek.ppmtool.services;
 
 import kamil.gaborek.ppmtool.domain.Project;
+import kamil.gaborek.ppmtool.exceptions.ProjectIdException;
 import kamil.gaborek.ppmtool.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,12 @@ public class ProjectService {
     }
 
     public Project SaveOrUpdateProject(Project project){
-
-        //Logic
-        return projectRepository.save(project);
+        try{
+            project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            return projectRepository.save(project);
+        }catch(Exception ex){
+            throw new ProjectIdException("Project ID '"+project.getProjectIdentifier()+"' already exists!");
+        }
     }
 
 }
