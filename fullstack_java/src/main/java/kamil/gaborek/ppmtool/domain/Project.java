@@ -1,11 +1,16 @@
 package kamil.gaborek.ppmtool.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -15,13 +20,23 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+    @NotBlank(message = "Project name is required")
     private String projectName;
+    @NotBlank(message = "Project identifier is required")
+    @Size(min = 4, max = 5, message = "User 4 to 5 characters")
+    @Column(updatable = false, unique = true)
     private String projectIdentifier;
+    @NotBlank
     private String description;
+    
+    @JsonFormat(pattern = "yyyy-dd-mm")
     private Date start_date;
+    @JsonFormat(pattern = "yyyy-dd-mm")
     private Date end_date;
 
+    @JsonFormat(pattern = "yyyy-dd-mm")
     private Date created_At;
+    @JsonFormat(pattern = "yyyy-dd-mm")
     private Date updated_At;
 
     public Project() {
