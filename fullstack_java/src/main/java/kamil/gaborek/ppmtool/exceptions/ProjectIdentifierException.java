@@ -5,9 +5,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class ProjectIdetifierException extends RuntimeException{
+public class ProjectIdentifierException extends RuntimeException{
 
-    public ProjectIdetifierException(String message){
+    public ProjectIdentifierException(String message){
         super(message);
     }
 }
