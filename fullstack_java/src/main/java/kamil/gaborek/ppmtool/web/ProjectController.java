@@ -7,6 +7,7 @@ import kamil.gaborek.ppmtool.services.ProjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,5 +48,11 @@ public class ProjectController {
     @GetMapping("/all")
     public ResponseEntity<?> getAllProjects(){
         return new ResponseEntity<>(projectService.findAllProjects(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{projectIdentifier}")
+    public ResponseEntity<?> deleteProjectByIdentifier(@PathVariable String projectIdentifier){
+        projectService.deleteProjectByIdetifier(projectIdentifier);
+        return new ResponseEntity<>("Project with identifier: '"+projectIdentifier.toUpperCase()+"' has been deleted", HttpStatus.OK);
     }
 }

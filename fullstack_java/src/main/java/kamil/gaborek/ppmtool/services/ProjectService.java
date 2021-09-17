@@ -40,4 +40,9 @@ public class ProjectService {
         return projectRepository.findAll();
     }
 
+    public void deleteProjectByIdetifier(String projectIdentifier){
+        Project project = this.findProjectByIdentifier(projectIdentifier);
+        projectRepository.delete(project);
+    }
+
 }
