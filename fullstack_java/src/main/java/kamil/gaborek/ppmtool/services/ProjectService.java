@@ -1,7 +1,6 @@
 package kamil.gaborek.ppmtool.services;
 
 import kamil.gaborek.ppmtool.domain.Project;
-import kamil.gaborek.ppmtool.exceptions.ProjectIdException;
 import kamil.gaborek.ppmtool.exceptions.ProjectIdetifierException;
 import kamil.gaborek.ppmtool.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
