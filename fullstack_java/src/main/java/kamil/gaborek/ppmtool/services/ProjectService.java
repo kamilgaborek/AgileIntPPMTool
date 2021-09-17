@@ -5,6 +5,8 @@ import kamil.gaborek.ppmtool.exceptions.ProjectIdentifierException;
 import kamil.gaborek.ppmtool.repositories.ProjectRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectService {
 
@@ -32,6 +34,10 @@ public class ProjectService {
         }
 
         return project;
+    }
+
+    public Iterable<Project> findAllProjects(){
+        return projectRepository.findAll();
     }
 
 }
