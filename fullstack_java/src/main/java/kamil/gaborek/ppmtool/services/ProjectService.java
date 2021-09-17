@@ -23,4 +23,15 @@ public class ProjectService {
         }
     }
 
+    public Project findProjectByIdentifier(String projectIdentifier){
+
+        String projectIdentifierUppercase = projectIdentifier.toUpperCase();
+        Project project = projectRepository.findByProjectIdentifier(projectIdentifierUppercase);
+        if(project == null){
+            throw new ProjectIdentifierException("There is no any project with identifier: "+ projectIdentifierUppercase);
+        }
+
+        return project;
+    }
+
 }
